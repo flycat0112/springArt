@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="springArt" basedir="." default="">
+
+    <property environment="evn"></property>
+
+    <property name="src.dir" value="src/statics" />
+
+    <property name="classes.dir" value="ant/classes" />
+
+    <property name="lib.dir" value="lib" />
+
+    <property name="dist.dir" value="ant/dist" />
+
+</project>
