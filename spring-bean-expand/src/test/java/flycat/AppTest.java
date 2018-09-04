@@ -1,16 +1,19 @@
 package flycat;
 
+import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Hello world!
- *
+ * Unit test for simple App.
  */
-public class App 
+public class AppTest 
 {
-    public static void main( String[] args )
+
+    @Test
+    public void shouldAnswerWithTrue()
     {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        context.registerShutdownHook();
     }
 }

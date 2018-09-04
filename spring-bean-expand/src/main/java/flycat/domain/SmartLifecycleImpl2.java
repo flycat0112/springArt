@@ -1,8 +1,6 @@
 package flycat.domain;
 
 
-import org.springframework.stereotype.Component;
-
 /**
  * @FileName: <p>LifecycleImpl</p>
  * @Description:
@@ -11,11 +9,9 @@ import org.springframework.stereotype.Component;
  * @Author <p>flycat</p>
  * @Date <p>18-9-3</p>
  */
-@Component
 public class SmartLifecycleImpl2 extends SmartLifecycleImpl{
 
     public SmartLifecycleImpl2() {
         this.phase = 2;
-        System.out.println(this.getClass() + "对象创建了，phase=" + phase);
     }
 }

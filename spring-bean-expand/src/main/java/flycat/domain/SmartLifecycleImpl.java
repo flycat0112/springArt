@@ -1,9 +1,6 @@
 package flycat.domain;
 
 import org.springframework.context.SmartLifecycle;
-import org.springframework.stereotype.Component;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @FileName: <p>LifecycleImpl</p>
@@ -13,16 +10,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @Author <p>flycat</p>
  * @Date <p>18-9-3</p>
  */
-@Component
 public class SmartLifecycleImpl implements SmartLifecycle {
-    protected volatile AtomicBoolean isRunning = new AtomicBoolean(false);
-    protected int phase = 0;  ///用来检验start和stop的执行顺序
+    protected int phase = 0;
 
     public SmartLifecycleImpl() {
         this.phase = 1;
-        System.out.println(this.getClass() + "对象创建了，phase=" + phase);
     }
-
 
     @Override
     /**
@@ -34,7 +27,7 @@ public class SmartLifecycleImpl implements SmartLifecycle {
      * @Create <p>18-9-3</p>
      */
     public boolean isAutoStartup() {
-        return true;
+        return false;
     }
 
     @Override
@@ -49,10 +42,9 @@ public class SmartLifecycleImpl implements SmartLifecycle {
      * @Create <p>18-9-3</p>
      */
     public void stop(Runnable runnable) {
-        isRunning.compareAndSet(true, false);
-        System.out.println(this.getClass() + "：回调函数执行前运行！，phase=" + phase);
+        System.out.println(this.getClass() + "：回调函数执行前运行！");
         runnable.run();
-        System.out.println(this.getClass() + "：回调函数执行完后运行！，phase=" + phase);
+        System.out.println(this.getClass() + "：回调函数执行完后运行！");
     }
 
     @Override
@@ -67,8 +59,7 @@ public class SmartLifecycleImpl implements SmartLifecycle {
      * @Create <p>18-9-3</p>
      */
     public void start() {
-        isRunning.compareAndSet(false, true);
-        System.out.println(this.getClass() + "：Lifecycle接口方法start方法调用开始，phase=" + phase);
+        System.out.println(this.getClass() + "：Lifecycle接口方法start方法调用开始");
     }
 
     @Override
@@ -84,8 +75,7 @@ public class SmartLifecycleImpl implements SmartLifecycle {
      */
     
     public void stop() {
-        isRunning.compareAndSet(true, false);
-        System.out.println(this.getClass() + ":Lifecycle接口方法stop方法调用停止，phase=" + phase);
+        System.out.println(this.getClass() + ":Lifecycle接口方法stop方法调用停止");
     }
 
     @Override
@@ -100,8 +90,8 @@ public class SmartLifecycleImpl implements SmartLifecycle {
      * @Create <p>18-9-3</p>
      */
     public boolean isRunning() {
-        System.out.println(this.getClass() + "：Lifecycle接口方法isRunning，phase=" + phase);
-        return isRunning.get();
+        System.out.println(this.getClass() + "：Lifecycle接口方法isRunning");
+        return false;
     }
 
     @Override

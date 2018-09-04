@@ -2,7 +2,6 @@ package flycat.domain;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -18,41 +17,38 @@ import javax.annotation.PreDestroy;
  *
  * <p>============================</p>
  */
-@Component
 public class DemoBean1 extends SmartLifecycleImpl implements InitializingBean, DisposableBean {
 
     public DemoBean1() {
-        this.phase = 4;
-        System.out.println(this.getClass() + "对象创建了，phase=" + phase);
+        this.phase = 5;
     }
-
 
     @PostConstruct
     public void postConstruct(){
-        System.out.println(this.getClass() + "使用了注解@PostConstruct，phase=" + phase);
+        System.out.println(this.getClass() + "使用了注解@PostConstruct");
     }
 
     @PreDestroy
     public void preDestory(){
-        System.out.println(this.getClass() + "使用了注解@PreDestroy，phase=" + phase);
+        System.out.println(this.getClass() + "使用了注解@PreDestroy");
     }
 
     @Override
     public void destroy(){
-        System.out.println(this.getClass() + "使用接口DisposableBean，phase=" + phase);
+        System.out.println(this.getClass() + "使用接口DisposableBean");
     }
 
     @Override
     public void afterPropertiesSet(){
-        System.out.println(this.getClass() + "使用接口InitializingBean，phase=" + phase);
+        System.out.println(this.getClass() + "使用接口InitializingBean");
 
     }
 
     public void init(){
-        System.out.println(this.getClass() + "通过配置中Beans的default-init-method属性来进行配置的，phase=" + phase);
+        System.out.println(this.getClass() + "通过配置中Beans的default-init-method属性来进行配置的");
     }
 
     public void destory(){
-        System.out.println(this.getClass() + "通过配置中Benas标签的default-destroy-method属性来进行配置，phase=" + phase);
+        System.out.println(this.getClass() + "通过配置中Benas标签的default-destroy-method属性来进行配置");
     }
 }

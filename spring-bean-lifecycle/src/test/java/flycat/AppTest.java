@@ -10,10 +10,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AppTest 
 {
 
+
     @Test
-    public void shouldAnswerWithTrue()
+    public void smartLifecycleTest()
     {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        AbstractApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-smartLifecycleTest.xml");
         context.registerShutdownHook();
     }
 }
