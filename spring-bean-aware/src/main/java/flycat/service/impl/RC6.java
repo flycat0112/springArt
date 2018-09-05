@@ -14,11 +14,6 @@ import java.security.Key;
  * @Description: <p>加密解密操作的实现，加密算法RC6</p>
  * @Author <p>flycat</p>
  * @Date <p>18-9-5</p>
- * <p>============================</p>
- * @Company: <p></p>
- * @Copyright: <p></p>
- *
- * <p>============================</p>
  */
 @Component
 public class RC6  implements Decryption, Encryption, BeanNameAware {

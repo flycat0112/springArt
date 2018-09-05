@@ -5,11 +5,6 @@ package flycat.utils;
  * @Description: <p></p>
  * @Author <p>flycat</p>
  * @Date <p>18-9-5</p>
- * <p>============================</p>
- * @Company: <p></p>
- * @Copyright: <p></p>
- *
- * <p>============================</p>
  */
 public class Hex {
 

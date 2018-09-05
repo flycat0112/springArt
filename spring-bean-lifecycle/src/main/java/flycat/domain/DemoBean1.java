@@ -12,11 +12,6 @@ import javax.annotation.PreDestroy;
  * @Description: <p></p>
  * @Author <p>flycat</p>
  * @Date <p>18-9-3</p>
- * <p>============================</p>
- * @Company: <p></p>
- * @Copyright: <p></p>
- *
- * <p>============================</p>
  */
 @Component
 public class DemoBean1 extends SmartLifecycleImpl implements InitializingBean, DisposableBean {

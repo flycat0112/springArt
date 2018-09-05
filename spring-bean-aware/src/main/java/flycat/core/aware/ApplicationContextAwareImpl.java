@@ -17,11 +17,6 @@ import java.util.Map;
  * @Description: <p>这儿使用ApplicationContextAware这个接口，所有Bean初始化完成的时候，读取容器里面所有单列的Bean</p>
  * @Author <p>flycat</p>
  * @Date <p>18-9-4</p>
- * <p>============================</p>
- * @Company: <p></p>
- * @Copyright: <p></p>
- *
- * <p>============================</p>
  */
 @Component
 public class ApplicationContextAwareImpl implements ApplicationContextAware , DecryptionProcessor, EncryptionProcessor {

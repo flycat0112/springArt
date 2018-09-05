@@ -21,11 +21,6 @@ import java.security.SecureRandom;
  * @Description: <p>加密解密操作的实现，加密算法AES</p>
  * @Author <p>flycat</p>
  * @Date <p>18-9-5</p>
- * <p>============================</p>
- * @Company: <p></p>
- * @Copyright: <p></p>
- *
- * <p>============================</p>
  */
 @Component
 public class AES implements Decryption, Encryption, BeanNameAware {

@@ -8,21 +8,25 @@
 	   http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	   ">
 	<beans default-init-method="init" default-destroy-method="destory">
+		<bean id="BeanFactoryPostProcessorImpl" class="flycat.domain.BeanFactoryPostProcessorImpl">
+
+		</bean>
+		<bean id="BeanPostProcessorImpl" class="flycat.domain.BeanPostProcessorImpl">
+
+		</bean>
+
 		<bean id="DemoBean1" class="flycat.domain.DemoBean1" >
 
 		</bean>
-		<bean id="smartLifecycle"  class="flycat.domain.SmartLifecycleImpl">
+		<bean id="DemoBean2" class="flycat.domain.DemoBean2" >
+			<property name="name" value="${bean2-name-val}"></property>
 
 		</bean>
-		<bean id="smartLifecycle2"  class="flycat.domain.SmartLifecycleImpl2">
+		<bean id="FactoryBeanImpl" class="flycat.domain.FactoryBeanImpl" >
 
 		</bean>
-		<bean id="smartLifecycle3"  class="flycat.domain.SmartLifecycleImpl3">
-
-		</bean>
-
 	</beans>
-	<!--<context:component-scan base-package="flycat" >
+	<!--<context:component-scan base-package="flycat">
 
-	</context:component-scan>	-->
+	</context:component-scan>-->
 </beans>
