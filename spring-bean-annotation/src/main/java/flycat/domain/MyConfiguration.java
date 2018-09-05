@@ -1,6 +1,7 @@
 package flycat.domain;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,13 +12,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MyConfiguration {
-    @org.springframework.context.annotation.Bean
+    @org.springframework.context.annotation.Bean(name = "stringStore")
+    @DependsOn(value = "integerStore")
     public Store<String> stringStore() {
+        System.out.println("stringStore创建完成！");
         return new Store<String>();
     }
 
-    @org.springframework.context.annotation.Bean
+    @org.springframework.context.annotation.Bean(name = "integerStore")
     public Store<Integer> integerStore() {
+        System.out.println("integerStore创建完成！");
         return new Store<Integer>();
     }
 }
