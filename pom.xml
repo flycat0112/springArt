@@ -13,6 +13,7 @@
     <module>spring-bean-expand</module>
     <module>spring-bean-lifecycle</module>
     <module>spring-bean-aware</module>
+    <module>spring-bean-annotation</module>
   </modules>
 
   <name>springArt</name>
