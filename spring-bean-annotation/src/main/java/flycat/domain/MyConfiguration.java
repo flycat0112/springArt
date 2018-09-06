@@ -1,5 +1,6 @@
 package flycat.domain;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @Author <p>flycat</p>
  * @Date <p>18-9-5</p>
  */
-@Component
+@Configuration
 public class MyConfiguration {
     @org.springframework.context.annotation.Bean(name = "stringStore")
     @DependsOn(value = "integerStore")
