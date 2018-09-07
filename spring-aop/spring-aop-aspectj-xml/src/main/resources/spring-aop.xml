@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	   http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	   ">
+	<!-- 设置使用aspectj的aop -->
+	<aop:aspectj-autoproxy/>
+	<!-- 设置使用cglib，不用java的proxy -->
+	<aop:scoped-proxy proxy-target-class="true"></aop:scoped-proxy>
+
+	<aop:config>
+		<aop:pointcut id="getName" expression="execution(* flycat.domain.IPerson.getName(*))" />
+
+		<aop:pointcut id="setName" expression="execution(* flycat.domain.Person.setName(*))" />
+
+		<aop:pointcut id="setSex" expression="execution(* flycat.domain.Person.setSex(*))" />
+
+		<aop:pointcut id="executionFlag" expression="execution(* flycat.domain.IPerson.*(..))" />
+		<aop:pointcut id="targetFlag" expression="target(flycat.domain.IPersonOther)" />
+		<aop:pointcut id="thisFlag" expression="this(flycat.domain.IPersonOther)" />
+
+		<aop:pointcut id="getNameTargetFlag" expression="execution(* flycat.domain.IPerson.*(..)) and target(flycat.domain.IPersonOther)" />
+		<aop:pointcut id="getNameThisFlag" expression="execution(* flycat.domain.IPerson.*(..)) and this(flycat.domain.IPersonOther)" />
+
+		<aop:aspect id="aopAspect" ref="aopAspect">
+
+			<aop:before method="aspectBefore" pointcut-ref="getName" />
+			<aop:before method="aspectBefore1" pointcut-ref="setName" />
+			<aop:before method="aspectBefore3" pointcut-ref="setSex" />
+
+			<aop:after method="aspectSetName" pointcut-ref="setSex" />
+			<aop:after method="aspectSetName1" pointcut-ref="setName" />
+
+			<aop:after-returning method="aspectAfterReturning" pointcut-ref="setSex" />
+			<aop:after-returning method="aspectAfterReturning1" pointcut-ref="setName" />
+
+			<aop:after-throwing method="aspectAfterThrowing" pointcut-ref="setSex" />
+			<aop:after-throwing method="aspectAfterThrowing1" pointcut-ref="setName" />
+
+
+			<aop:around method="aspectAround" pointcut-ref="setSex" pointcut="args(name,..)" />
+			<aop:around method="aspectAround1" pointcut-ref="setName" pointcut="args(name,..)"/>
+		</aop:aspect>
+
+		<aop:aspect id="aopAspect1" ref="aopAspect1" order="1">
+
+			<aop:before method="getNameTarget" pointcut-ref="getNameTargetFlag" />
+			<aop:before method="getNameThis" pointcut-ref="getNameThisFlag" />
+			<aop:before method="getNameTarget1" pointcut-ref="targetFlag" />
+			<aop:before method="getNameThis1" pointcut-ref="thisFlag" />
+		</aop:aspect >
+
+		<aop:aspect id="addPersonOtherForPersonAspect" ref="addPersonOtherForPersonAspect" order="2">
+			<aop:declare-parents types-matching="flycat.domain.Person" default-impl="flycat.domain.PersonOther" implement-interface="flycat.domain.IPersonOther"/>
+		</aop:aspect>
+	</aop:config>
+
+	<beans >
+		<bean id="aopAspect" class="flycat.aop.AopAspect">
+
+		</bean>
+		<bean id="aopAspect1" class="flycat.aop.AopAspect1">
+			<property name="order" value="1" />
+		</bean>
+		<bean id="addPersonOtherForPersonAspect" class="flycat.aop.AddPersonOtherForPersonAspect">
+			<property name="order" value="2" />
+		</bean>
+	</beans>
+</beans>
