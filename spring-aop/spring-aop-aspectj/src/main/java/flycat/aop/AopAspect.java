@@ -4,7 +4,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
 import javax.annotation.ManagedBean;
-import java.lang.annotation.Target;
 
 /**
  * @FileName: <p>NotVeryUsefulAspect</p>
@@ -86,7 +85,7 @@ public class AopAspect {
     }
 
 
-    @Around("setSex() && args(name,..) && target(flycat.domain.PersonInter) && this(flycat.domain.PersonInter)")
+    @Around("setSex() && args(name,..) && target(flycat.domain.IPerson) && this(flycat.domain.IPerson)")
     public Object aspectAround(ProceedingJoinPoint pjp, boolean name){
         Object[] obj = {name};
         System.out.println("切面Around调用了有异常的方法!");
@@ -100,7 +99,7 @@ public class AopAspect {
         }
     }
 
-    @Around(value = "setName() && args(name,..) && target(flycat.domain.PersonInter) && this(flycat.domain.PersonInter)")
+    @Around(value = "setName() && args(name,..) && target(flycat.domain.IPersonOther) && this(flycat.domain.IPerson)")
     public Object aspectAround1(ProceedingJoinPoint pjp, String name){
         Object[] obj = {name};
         System.out.println("切面Around调用了无异常的方法!");

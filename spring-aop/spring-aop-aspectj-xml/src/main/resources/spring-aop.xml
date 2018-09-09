@@ -7,12 +7,12 @@
 	   http://www.springframework.org/schema/aop
 	   http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 	   ">
-	<!-- 设置使用aspectj的aop -->
-	<aop:aspectj-autoproxy/>
-	<!-- 设置使用cglib，不用java的proxy -->
-	<aop:scoped-proxy proxy-target-class="true"></aop:scoped-proxy>
+	<!-- 设置使用cglib，不用java的proxy， 设置使用aspectj的aop -->
+	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 
 	<aop:config>
+
+
 		<aop:pointcut id="getName" expression="execution(* flycat.domain.IPerson.getName(*))" />
 
 		<aop:pointcut id="setName" expression="execution(* flycat.domain.Person.setName(*))" />
@@ -26,7 +26,10 @@
 		<aop:pointcut id="getNameTargetFlag" expression="execution(* flycat.domain.IPerson.*(..)) and target(flycat.domain.IPersonOther)" />
 		<aop:pointcut id="getNameThisFlag" expression="execution(* flycat.domain.IPerson.*(..)) and this(flycat.domain.IPersonOther)" />
 
-		<aop:aspect id="aopAspect" ref="aopAspect">
+		<aop:advisor advice-ref="" pointcut-ref="setSex" ></aop:advisor>
+
+
+		<aop:aspect id="aopAspect" ref="aopAspect" >
 
 			<aop:before method="aspectBefore" pointcut-ref="getName" />
 			<aop:before method="aspectBefore1" pointcut-ref="setName" />
@@ -57,6 +60,7 @@
 		<aop:aspect id="addPersonOtherForPersonAspect" ref="addPersonOtherForPersonAspect" order="2">
 			<aop:declare-parents types-matching="flycat.domain.Person" default-impl="flycat.domain.PersonOther" implement-interface="flycat.domain.IPersonOther"/>
 		</aop:aspect>
+
 	</aop:config>
 
 	<beans >

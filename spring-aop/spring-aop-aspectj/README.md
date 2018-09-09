@@ -17,6 +17,8 @@ public class App
 
 }
 
+[点击并拖拽以移动]
+
 2) 声明切入类：
 
 在类上面使用@Aspect注解。
@@ -41,8 +43,6 @@ public class App
 
 ps : Around的执行顺序也是特别的，它进入在before切点前面执行，因为它有可以选择是否执行该方法，  *但是方法体执行完成的后，它是在after切点的前面，因此，方法体内部是否处理异常会改变AfterReturning或者AfterThrowing两个，那个切点执行。
 
-[点击并拖拽以移动]
-
  实例Demo部分代码：
 
 IPerson.java
@@ -59,6 +59,7 @@ public interface IPerson {
 }
 
 Person.java
+
 
 /**
  * @FileName: <p>Person</p>
@@ -105,8 +106,6 @@ public class Person implements IPerson{
     }
 
 }
-
-[点击并拖拽以移动]
 
 AopAspect.java
 
@@ -184,7 +183,7 @@ public class AopAspect {
     }
 
 
-    @Around("setSex() && args(name,..) && target(flycat.domain.PersonInter) && this(flycat.domain.PersonInter)")
+    @Around("setSex() && args(name,..) && target(flycat.domain.IPerson) && this(flycat.domain.IPerson)")
     public Object aspectAround(ProceedingJoinPoint pjp, boolean name){
         Object[] obj = {name};
         System.out.println("切面Around调用了有异常的方法!");
@@ -198,7 +197,7 @@ public class AopAspect {
         }
     }
 
-    @Around(value = "setName() && args(name,..) && target(flycat.domain.PersonInter) && this(flycat.domain.PersonInter)")
+    @Around(value = "setName() && args(name,..) && target(flycat.domain.IPersonOther) && this(flycat.domain.IPerson)")
     public Object aspectAround1(ProceedingJoinPoint pjp, String name){
         Object[] obj = {name};
         System.out.println("切面Around调用了无异常的方法!");
@@ -260,7 +259,6 @@ public interface IPersonOther {
 
 PersonOther.java
 
-
 /**
  * @FileName: <p>PersonOther</p>
  * @Description: <p>这个来区别target和this的区别,</p>
@@ -276,6 +274,15 @@ public class PersonOther implements IPersonOther{
 
 AddPersonOtherForPersonAspect.java
 
+
+/**
+ * @FileName: <p>AddPersonOtherForPersonAspect</p>
+ * @Description: <p>通过代理的方式方Person实现IPersonOther接口,这儿是为了区别target和this</p>
+ * <p> 因为这儿是通过代理的方式，target代表的是目标,这儿的目标代表的是IPersonOther接口，所以target就会把它过滤掉
+ * ，this代表的代理对象，属于IPersonOther和IPerson两个接口的结合，所以this就不会被过滤掉 </p>
+ * @Author <p>flycat</p>
+ * @Date <p>18-9-7</p>
+ */
 @ManagedBean
 @Aspect
 public class AddPersonOtherForPersonAspect implements Ordered {
@@ -333,8 +340,6 @@ public class AopAspect1  implements Ordered {
     }
 }
 
-[点击并拖拽以移动]
-
 PerformanceAction.java
 
 @RestController
@@ -356,8 +361,6 @@ public class PerformanceAction {
 
 }
 
-[点击并拖拽以移动]
-
 最后执行完打印信息是：
 
 
@@ -377,4 +380,11 @@ public class PerformanceAction {
 该切点属于IPersonOther并且是This（代理对象）
 使用了isBoli方法，你是玻璃！
 
-结论： 通过代理的方式实现IPerson接口，并且target代表的是目标,这儿的目标代表的是IPersonOther接口，由@DeclareParents注释下方变量声明，本列子是IPersonOther, 所以target就会把它过滤掉* ，this代表的代理对象，属于IPersonOther和IPerson两个接口的结合，所以this就不会被过滤掉 。
+结论： 通过代理的方式实现IPerson接口，
+并且target代表的是目标,这儿的目标代表的是IPersonOther接口，
+由@DeclareParents注释下方变量声明，
+本列子是IPersonOther, 
+所以target就会把它过滤掉，
+this代表的代理对象，
+属于IPersonOther和IPerson两个接口的结合，
+所以this就不会被过滤掉 。

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.EnableLoadTimeWeaving;
 
 /**
  * Hello world!
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration
 @EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
 @EnableAutoConfiguration
+@EnableLoadTimeWeaving
 @ComponentScan
 public class App
 {

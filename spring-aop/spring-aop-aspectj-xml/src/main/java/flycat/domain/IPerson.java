@@ -1,7 +1,7 @@
 package flycat.domain;
 
 /**
- * @Title: <p>PersonInter</p>
+ * @Title: <p>IPerson</p>
  * @Description: <p></p>
  * @Company: <p></p>
  * @Author <p>zengqiang</p>
