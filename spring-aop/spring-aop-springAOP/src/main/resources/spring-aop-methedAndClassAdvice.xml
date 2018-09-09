@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	   ">
+
+	<!-- 对需要增强的类和方法进行过滤 -->
+	<bean id="jdkRegexpMethodPointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="patterns">
+			<list>
+				<value>flycat\.domain\.Person\.get.*</value>
+			</list>
+		</property>
+	</bean>
+	<!-- before的切面 -->
+	<bean id="aopBeforeAdvistor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="aopBeforeAdvice">
+		</property>
+		<property name="pointcut" ref="jdkRegexpMethodPointcut">
+		</property>
+	</bean>
+	<!-- AfterReturning的切面 -->
+	<bean id="aopAfterReturningAdvistor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="aopAfterReturningAdvice">
+		</property>
+		<property name="pointcut" ref="jdkRegexpMethodPointcut">
+		</property>
+	</bean>
+
+	<!-- AfterThrowing的切面 -->
+	<bean id="aopAfterThrowingAdvistor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="aopAfterThrowingAdvice">
+		</property>
+		<property name="pointcut" ref="jdkRegexpMethodPointcut">
+		</property>
+	</bean>
+
+	<!-- Around的切面 -->
+	<bean id="aopAroundAdvistor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="aopAroundAdvice">
+		</property>
+		<property name="pointcut" ref="jdkRegexpMethodPointcut">
+		</property>
+	</bean>
+
+
+	<bean id="advisorIntroductionImpl" class="flycat.aop.advisor.AdvisorIntroductionImpl">
+		<constructor-arg ref="aopIntroductionImpl">
+
+		</constructor-arg>
+	</bean>
+
+</beans>

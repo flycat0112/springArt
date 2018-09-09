@@ -1,0 +1,4 @@
+这儿是通过通过配置的方式实现AspectJ的AOP功能，Spring boot启动配置的Aop，
+spring-aop.xml文件是AspectJ的aop配置
+flycat.aop.AddPersonOtherForPersonAspect是通过代理的方式实现一个接口。
+target和this的区别详细查看spring-aop-aspecj项目
