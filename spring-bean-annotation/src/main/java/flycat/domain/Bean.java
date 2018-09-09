@@ -2,6 +2,8 @@ package flycat.domain;
 
 import flycat.Format;
 import flycat.MovieQualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,5 +14,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @MovieQualifier(format = Format.BLURAY ,genre = "Bean")
+@ImportResource("classpath:/properties-config.xml")
 public class Bean {
+    @Value("${bean.name}")
+    private String name;
 }
