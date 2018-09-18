@@ -6,10 +6,32 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springbeanexpand" />
-        <module name="springbeanlifecycle" />
+        <module name="spring-aop-aspectj" />
+        <module name="spring-aop-aspectj-xml" />
+        <module name="spring-aop-springAOP" />
+        <module name="spring-applicationContext-other" />
+        <module name="spring-bean-aware" />
+        <module name="spring-bean-expand" />
+        <module name="spring-bean-jsr3" />
+        <module name="spring-bean-lifecycle" />
+        <module name="spring-ejb" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="spring-resource" target="1.7" />
+      <module name="spring-resources" target="1.8" />
+      <module name="springaop" target="1.8" />
+      <module name="springaopaspectj" target="1.8" />
+      <module name="springaopspringAOP" target="1.8" />
+      <module name="springapplicationContext" target="1.8" />
+      <module name="springapplicationContextother" target="1.8" />
+      <module name="springbeanannotation" target="1.8" />
+      <module name="springbeanaware" target="1.7" />
+      <module name="springbeanexpand" target="1.8" />
+      <module name="springbeanjsr3" target="1.7" />
+      <module name="springbeanlifecycle" target="1.8" />
+      <module name="springejb" target="1.7" />
+      <module name="springresource" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,7 +2,23 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-aop" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-aop/spring-aop-aspectj" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-aop/spring-aop-aspectj-xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-aop/spring-aop-springAOP" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-applicationContext" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-applicationContext/spring-applicationContext-other" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bean-annotation" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bean-annotation/spring-bean-jsr3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bean-aware" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-bean-expand" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-bean-lifecycle" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ejb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-resouce" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-resources" charset="UTF-8" />
   </component>
 </project>
