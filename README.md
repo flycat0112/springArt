@@ -4,6 +4,10 @@
 博客地址列表：
 
 1、spring 官方文档的接口理解整理（一）Bean
-<url>https://blog.csdn.net/zq1994520/article/details/82351676</url>。
+<url>https://blog.csdn.net/zq1994520/article/details/82351676</url>
 2、spring 官方文档的接口理解整理（二）AOP
 <url>https://blog.csdn.net/zq1994520/article/details/82498615</url>
+3、spring 官方文档的接口理解整理（三）类型转换
+<url>https://blog.csdn.net/zq1994520/article/details/82830530</url>
+4、spring 官方文档的接口理解整理（四）类型转换spring实例解析
+<url>https://blog.csdn.net/zq1994520/article/details/82833780</url>
